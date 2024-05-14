@@ -1,0 +1,4 @@
+.editor-group-watermark > .letterpress{
+  background-image: url("https://raw.githubusercontent.com/akidon0000/env_setup/main/vscode/icon/vscode-icon.png") !important;
+  opacity: .75;
+}
