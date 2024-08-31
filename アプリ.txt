@@ -1,0 +1,35 @@
+初回に入れたいアプリたち
+Android Studio
+Arc
+Clipy
+CotEditor
+Cursor
+Discord
+Figma
+Firefox
+Fork
+HiddenBar
+iTeerm
+Karabiner
+Line
+LogiOptions
+MeetingBar
+Mist
+Neat
+Notion
+Proxyman
+RunCat
+Slack
+Xcodes
+Zoom
+chrome
+
+swiftはプロトコルの言語、制約しか使えない
+プロトコル指向
+anyはオブジェクト指向
+
+プロトコルを制約として使う
+any someをつけていく
+オペキュー
+
+xcode Including ehitespace-only

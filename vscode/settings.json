@@ -1,0 +1,219 @@
+{
+  "window.title": "${dirty}${activeEditorShort} / ${rootName}",
+  "window.closeWhenEmpty": false,
+  // 行の折り返し
+  "editor.wordWrap": "on",
+  // タブサイズとインデントサイズを自動検出するか
+  "editor.detectIndentation": false,
+  // ミニマップスライダーを常に表示
+  "editor.minimap.showSlider": "always",
+  // スニペット予測の表示位置
+  "editor.snippetSuggestions": "top",
+  // ラインの高さ
+  "editor.lineHeight": 28,
+  // 選択中の行を強調する
+  "editor.renderLineHighlight": "all",
+  // 行の左端に余白を作る
+  "editor.glyphMargin": true,
+  // 選択範囲の角を丸める
+  "editor.roundedSelection": true,
+  // コード整形
+  "editor.formatOnType": false,
+  // コード整形
+  "editor.formatOnPaste": false,
+  // コードの折りたたみを許可
+  "editor.folding": true,
+  // 文字の間隔を詰める
+  "editor.letterSpacing": -1,
+  // 行番号の表示
+  "editor.lineNumbers": "on",
+  // ミニマップの表示
+  "editor.minimap.enabled": true,
+  // ミニマップの幅
+  "editor.minimap.maxColumn": 40,
+  // 最終行よりも下へのスクロールを許可
+  "editor.scrollBeyondLastLine": true,
+  // 制御文字の表示
+  "editor.renderControlCharacters": true,
+  // Tabキーで半角スペースを入力
+  "editor.insertSpaces": true,
+  // 文字サイズ
+  "editor.fontSize": 14,
+  // ミニマップを簡略化
+  "editor.minimap.renderCharacters": false,
+  // ミニマップを右に表示
+  "editor.minimap.side": "right",
+  // オートインデント
+  "editor.autoIndent": "full",
+  // カーソルの形状
+  "editor.cursorStyle": "line-thin",
+  // カーソルの表示形式
+  "editor.cursorBlinking": "smooth",
+  // カーソル幅
+  "editor.cursorWidth": 5,
+  // 選択範囲無しでのコピーを許可
+  "editor.emptySelectionClipboard": true,
+  // リンクをクリック可能に
+  "editor.links": true,
+  // 対応する括弧の強調表示をオンに
+  "editor.matchBrackets": "always",
+  // マウスホイール回転の移動係数
+  "editor.mouseWheelScrollSensitivity": 0.7,
+  // Ctrl+マウスホイールによるズームを無効化
+  "editor.mouseWheelZoom": false,
+  // サジェストの文字サイズ
+  "editor.suggestFontSize": 24,
+  // サジェスト欄の行の高さ
+  "editor.suggestLineHeight": 24,
+  // 保存時フォーマットを統一
+  "editor.formatOnSave": true,
+  // 候補表示
+  "editor.suggestSelection": "first",
+  // 補完候補の自動表示
+  "editor.quickSuggestions": {
+    "comments": false, // コメント内では無効
+    "strings": true, // 文字列内では有効
+    "other": true //  その他の場所で有効
+  },
+  // フォーマッターの種類
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  /*
+    ターミナル
+  */
+  // フォントサイズ
+  "terminal.integrated.fontSize": 22,
+  // フォントタイプ
+  "terminal.integrated.fontFamily": "JetBrains Mono",
+  // 文字の間隔を詰める
+  "terminal.integrated.letterSpacing": 0,
+  // コピペ許可
+  "terminal.integrated.copyOnSelection": true,
+  // カーソルの点滅
+  "terminal.integrated.cursorBlinking": true,
+  // カーソルタイプ
+  "terminal.integrated.cursorStyle": "line",
+  // PATH
+  "terminal.integrated.cwd": "/Users/akidon/program/",
+  "terminal.integrated.inheritEnv": false,
+  "terminal.external.osxExec": "Rosettaターミナル.app",
+
+  // ファイルのオートセーブ化 "off","afterDelay","onFocusChange","onWindowChange"
+  "files.autoSave": "afterDelay",
+  // 1000 ミリ秒後自動保存
+  "files.autoSaveDelay": 1000,
+  // 改行コードをLFに指定
+  "files.eol": "\n", // 改行コードをLF(Linux/OSX)にする
+  // ファイルの終端に空の行を追加
+  "files.insertFinalNewline": true,
+  // 文字コードを自動判別
+  "files.autoGuessEncoding": true,
+  // エクスプローラーから除外するファイルとフォルダ
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/bin": true,
+    //"**/*.exe": true,
+    "**/*.o": true,
+    "**/*.obj": true,
+    "**/*.ilk": true,
+    "**/*.pdb": true,
+    "**/*.tlog": true,
+    "**/*.idb": true,
+    "**/*.dll": true
+    // "**.vs": true,
+  },
+
+  /*
+    ワークベンチ設定
+  */
+  // タブバー(上端)表示
+  "workbench.editor.showTabs": "multiple",
+  // タブバーサイズ
+  "workbench.editor.tabSizing": "fit",
+  // サイドバー位置
+  "workbench.sideBar.location": "left",
+  //常に新しいタブで表示=false
+  "workbench.editor.enablePreview": false,
+
+  /*
+   クラッシュレポートを送信する
+  */
+  "telemetry.enableCrashReporter": true,
+  "telemetry.enableTelemetry": true,
+
+  /*
+   拡張機能関連
+  */
+  "extensions.autoUpdate": true, // 自動更新
+  "extensions.ignoreRecommendations": false,
+
+  /*
+    マークダウン
+  */
+  "markdown.preview.breaks": true, // 改行を反映
+  "markdown.preview.fontSize": 22, // 文字サイズ
+  "markdown.preview.lineHeight": 1.1, // 行幅
+  "markdown.styles": ["~/markdown_pdf.css"],
+  "[json]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace"
+  },
+
+  "vscode_custom_css.imports": [
+    "https://raw.githubusercontent.com/akidon0000/env_setup/main/vscode/icon/vscode-icon-custom.css"
+  ],
+
+  /*
+    Git
+  */
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+
+  /*
+    その他
+  */
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.trimTrailingWhitespace": true,
+  "go.toolsManagement.autoUpdate": true,
+  "redhat.telemetry.enabled": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.unicodeHighlight.allowedCharacters": {
+    "き": true
+  },
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.guides.indentation": true,
+  "git.confirmSync": false,
+  "dart.flutterSdkPath": "/Users/akidon/development/flutter",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "window.zoomLevel": -1,
+  "editor.inlineSuggest.enabled": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  "lldb.library": "/Applications/Xcode-15.0.1.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+  "lldb.launch.expressions": "native",
+  "settingsSync.ignoredSettings": ["editor.fontFamily"],
+  "editor.fontFamily": "'0xProto'",
+  "editor.autoClosingBrackets": "beforeWhitespace",
+  "editor.autoClosingComments": "never",
+  "editor.autoClosingOvertype": "never",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.codeLens": false,
+  "workbench.editor.tabActionLocation": "left",
+  "githubPullRequests.pullBranch": "never",
+  "workbench.colorTheme": "Visual Studio 2019 Dark",
+  "workbench.iconTheme": "vs-minimal",
+  "git.openRepositoryInParentFolders": "always",
+  "github.copilot.editor.enableAutoCompletions": true
+}
