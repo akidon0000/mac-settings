@@ -36,3 +36,13 @@ xcode Including ehitespace-only
 
 Arcの拡張機能は
 Raindrop.io
+
+github
+https://qiita.com/shizuma/items/2b2f873a0034839e47ce
+
+mkdir ~/.ssh
+cd ~/.ssh
+ssh-keygen -t rsa
+cat ~/.ssh/id_rsa.pub | pbcopy
+アップロード
+https://github.com/settings/ssh
