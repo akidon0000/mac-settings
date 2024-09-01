@@ -50,3 +50,13 @@ https://github.com/settings/ssh
 
 0xProto
 https://github.com/0xType/0xProto/releases/tag/2.100
+
+
+VScode
+brew install swift-format
+https://marketplace.visualstudio.com/items?itemName=vknabel.vscode-apple-swift-format
+https://github.com/vknabel/vscode-apple-swift-format
+
+command+shift+P
+"editor.formatOnType": true
+にする
