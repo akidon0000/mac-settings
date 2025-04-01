@@ -4,28 +4,59 @@ alias la='ls -a'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias g='git'
 alias ga='git add'
 alias gd='git diff'
 alias gs='git status'
 alias gp='git push'
 alias gpo='git push -u origin'
 alias gb='git branch'
+alias gbd='git branch -d'
 alias gco='git checkout'
 alias gf='git fetch'
 alias gc='git commit'
 alias gl='git log --graph'
+alias glo='git log --oneline'
 alias gpl='git pull'
 alias gcm='git commit -m'
 
 alias viz='vi ~/.zshrc'
 alias sz='source ~/.zshrc'
-
+alias osim='open -a Simulator'
 
 # 安全のため
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+
+
+# gitignore生成
+alias ignoreios='gibo dump Swift Xcode macOS >> .gitignore'
+
+# Xcode
+alias cleanios='rm -rf ~/Library/Developer/CoreSimulator/Caches/dyld'
+
+alias clean='rm -rf ~/Library/Developer/Xcode/DerivedData'
+
+
+# GHQ
+## ghqとの連携。ghqの管理化にあるリポジトリを一覧表示する。ctrl - ]にバインド。
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --prompt="repositories >" --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src
+
+
+# ghqのリスト表示
+alias g='cd $(ghq root)/$(ghq list | peco)'
+
+# ghqでリストを表示し、ブラウザを起動する
+alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 
 
 # 競プロ用
@@ -105,6 +136,6 @@ setopt correct
 eval "$(starship init zsh)"
 
 # rbenv
+rbenv init
 eval "$(rbenv init - zsh)"
 alias rbenvv='rbenv versions'
-
