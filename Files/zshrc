@@ -50,7 +50,11 @@ alias rm='rm -i'
 # mise
 # ======================================
 
-eval "$(~/.local/bin/mise activate zsh)"
+# ---- miseの自動インストール ----
+if ! command -v mise &> /dev/null; then
+    echo "mise is not installed. Installing via Homebrew..."
+    brew install mise
+fi
 
 # ---- Ruby ----
 export PATH="$HOME/.local/share/mise/installs/ruby/3.4.6/bin:$PATH"
@@ -69,6 +73,18 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # ======================================
 # GHQ & peco
 # ======================================
+
+# ---- ghqの自動インストール ----
+if ! command -v ghq &> /dev/null; then
+    echo "ghq is not installed. Installing via Homebrew..."
+    brew install ghq
+fi
+
+# ---- pecoの自動インストール ----
+if ! command -v peco &> /dev/null; then
+    echo "peco is not installed. Installing via Homebrew..."
+    brew install peco
+fi
 
 # ---- ghqのリスト表示 ----
 alias g='cd $(ghq root)/$(ghq list | peco)'
@@ -92,6 +108,12 @@ zle -N peco-src
 # ======================================
 # Starship
 # ======================================
+
+# ---- starshipの自動インストール ----
+if ! command -v starship &> /dev/null; then
+    echo "starship is not installed. Installing via Homebrew..."
+    brew install starship
+fi
 
 eval "$(starship init zsh)"
 
