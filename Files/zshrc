@@ -1,0 +1,129 @@
+# ======================================
+# 業務
+# ======================================
+
+# ---- Gitアカウントを複数使用する ----
+# function gitmain() {
+#   git config --global user.name "akihiro.matsuyama/akidon"
+#   git config --global user.email "akihiro.matsuyama@sansan.com"
+# }
+
+# function gitsub() {
+#   git config --global user.name "akidon0000"
+#   git config --global user.email "akidon0000@gmail.com"
+# }
+
+
+
+# ======================================
+# 業務 & Android
+# ======================================
+
+# ---- Java, Android ----
+export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jbr/Contents/Home
+export PATH=${JAVA_HOME}/bin:${PATH}
+export ANDROID_HOME="$HOME/Library/Android/sdk/"
+export PATH=$ANDROID_HOME/platform-tools:${PATH}
+export PATH=$ANDROID_HOME/tools:${PATH}
+export PATH=$ANDROID_HOME/tools/bin:${PATH}
+export PATH=$ANDROID_HOME/build-tools/35.0.0:${PATH}
+
+
+
+# ======================================
+# コマンド簡略化
+# ======================================
+
+alias ..='cd ..'
+alias ...='cd ../.'
+alias vz='vi ~/.zshrc'
+alias sz='source ~/.zshrc'
+
+# ---- 安全のため ----
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+
+
+# ======================================
+# mise
+# ======================================
+
+eval "$(~/.local/bin/mise activate zsh)"
+
+# ---- Ruby ----
+export PATH="$HOME/.local/share/mise/installs/ruby/3.4.6/bin:$PATH"
+
+
+
+# ======================================
+# Homebrew
+# ======================================
+
+# ---- Homebrewのパスを通すコマンド ----
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
+
+# ======================================
+# GHQ & peco
+# ======================================
+
+# ---- ghqのリスト表示 ----
+alias g='cd $(ghq root)/$(ghq list | peco)'
+
+# ---- ghqでリストを表示し、ブラウザを起動する ----
+alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
+
+# ---- ghqの管理化にあるリポジトリを一覧表示する ----
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --prompt="repositories >" --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+
+
+
+# ======================================
+# Starship
+# ======================================
+
+eval "$(starship init zsh)"
+
+# ---- ログレベルを下げる ----
+export STARSHIP_LOG=error
+
+
+
+# ======================================
+# Zinit's
+# ======================================
+
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+
+# ---- シンタックスハイライト ----
+zinit light zsh-users/zsh-syntax-highlighting
+
+
+# ---- 入力補完 ----
+zinit light zsh-users/zsh-autosuggestions
