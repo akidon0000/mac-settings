@@ -28,6 +28,7 @@ SSH鍵の生成とフォントのインストールを対話式メニューで�
 **含まれる機能:**
 - SSH鍵の生成（GitHub用）
 - 0xProto フォントのインストール
+- zshrc設定のセットアップ
 
 ---
 
@@ -70,6 +71,35 @@ GitHub用のSSH鍵を生成し、公開鍵をクリップボードにコピー�
 - TTF/OTF形式に対応
 
 **参考:** [0xProto GitHub](https://github.com/0xType/0xProto)
+
+---
+
+### ⚙️ zshrc設定のセットアップ
+
+#### `setup_zshrc.sh` - zshrc設定スクリプト
+
+リポジトリの `Files/zshrc` を `~/.zshrc` にシンボリックリンクします。
+
+```bash
+./Scripts/setup_zshrc.sh
+```
+
+**機能:**
+- `Files/zshrc` を `~/.zshrc` にシンボリックリンク
+- 既存の `.zshrc` がある場合は自動バックアップ
+- 設定の自動反映
+
+**含まれる設定:**
+- Gitアカウント切り替え関数
+- Java/Android環境変数
+- コマンドエイリアス（cd, vi, sourceなど）
+- mise（バージョン管理ツール）
+- Homebrew
+- GHQ & peco（リポジトリ管理）
+- Starship（プロンプトカスタマイズ）
+- Zinit（プラグインマネージャー）
+  - シンタックスハイライト
+  - 入力補完
 
 ---
 
@@ -133,6 +163,9 @@ cd mac-settings
 # フォントのみインストール
 ./Scripts/install_0xproto_font.sh
 
+# zshrc設定のみセットアップ
+./Scripts/setup_zshrc.sh
+
 # アプリケーションのインストール
 ./Scripts/install_apps.sh
 ```
@@ -149,11 +182,15 @@ mac-settings/
 ├── Scripts/
 │   ├── setup_environment.sh      # 統合セットアップスクリプト
 │   ├── setup_ssh.sh              # SSH鍵生成
+│   ├── setup_zshrc.sh            # zshrc設定
 │   ├── install_0xproto_font.sh   # フォントインストール
 │   ├── install_apps.sh           # アプリ一括インストール
 │   ├── backup_xcode.sh           # Xcode設定バックアップ
 │   └── restore_xcode.sh          # Xcode設定リストア
 └── Files/                         # 設定ファイル保存用
+    ├── zshrc                      # zsh設定ファイル
+    ├── vscode/                    # VSCode設定
+    └── iTerm2/                    # iTerm2設定
 ```
 
 ### 必要な環境

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Mac環境セットアップスクリプト
-# SSH鍵の生成と0xProtoフォントのインストールを実行します
+# SSH鍵の生成、0xProtoフォントのインストール、zshrc設定を実行します
 
 set -e
 
@@ -16,10 +16,11 @@ echo ""
 echo "実行する項目を選択してください:"
 echo "  1) SSH鍵の生成"
 echo "  2) 0xProto フォントのインストール"
-echo "  3) 両方実行"
-echo "  4) キャンセル"
+echo "  3) zshrc設定のセットアップ"
+echo "  4) すべて実行"
+echo "  5) キャンセル"
 echo ""
-read -p "選択 (1-4): " choice
+read -p "選択 (1-5): " choice
 
 case $choice in
     1)
@@ -36,29 +37,42 @@ case $choice in
         ;;
     3)
         echo ""
+        echo "📌 zshrc設定のセットアップを実行します..."
+        echo ""
+        bash "$SCRIPT_DIR/setup_zshrc.sh"
+        ;;
+    4)
+        echo ""
         echo "📌 すべてのセットアップを実行します..."
         echo ""
 
         # SSH鍵の生成
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo "1/2: SSH鍵の生成"
+        echo "1/3: SSH鍵の生成"
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         echo ""
         bash "$SCRIPT_DIR/setup_ssh.sh"
 
         echo ""
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo "2/2: 0xProto フォントのインストール"
+        echo "2/3: 0xProto フォントのインストール"
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         echo ""
         bash "$SCRIPT_DIR/install_0xproto_font.sh"
+
+        echo ""
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "3/3: zshrc設定のセットアップ"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo ""
+        bash "$SCRIPT_DIR/setup_zshrc.sh"
 
         echo ""
         echo "=================================="
         echo "✅ すべてのセットアップが完了しました！"
         echo "=================================="
         ;;
-    4)
+    5)
         echo ""
         echo "❌ セットアップをキャンセルしました"
         exit 0
