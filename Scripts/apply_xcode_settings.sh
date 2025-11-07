@@ -4,23 +4,16 @@
 
 set -e
 
-# 使い方を表示
-if [ $# -eq 0 ]; then
-    echo "使い方: $0 <バックアップディレクトリのパス>"
-    echo ""
-    echo "例:"
-    echo "  $0 ~/Downloads/xcode_backup_20231023_123456"
-    echo ""
-    echo "または、このスクリプトと同じディレクトリにある xcode フォルダから復元:"
-    echo "  $0 --from-repo"
-    exit 1
-fi
-
 # バックアップ元の決定
 if [ "$1" = "--from-repo" ]; then
     SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
     BACKUP_DIR="$SCRIPT_DIR/xcode"
     echo "📦 リポジトリ内のXcode設定から復元します..."
+elif [ $# -eq 0 ]; then
+    # デフォルトディレクトリ ../Files/xcode
+    SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+    BACKUP_DIR="$SCRIPT_DIR/../Files/xcode"
+    echo "📦 デフォルトディレクトリから復元します: $BACKUP_DIR"
 else
     BACKUP_DIR="$1"
     echo "📦 指定されたディレクトリからXcode設定を復元します..."

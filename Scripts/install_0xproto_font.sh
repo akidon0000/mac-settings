@@ -4,10 +4,7 @@
 # 最新版の0xProtoフォントをダウンロードしてインストールします
 
 set -e
-
-FONT_VERSION="2.100"
-FONT_NAME="0xProto"
-DOWNLOAD_URL="https://github.com/0xType/0xProto/releases/download/${FONT_VERSION}/0xProto_${FONT_VERSION}.zip"
+DOWNLOAD_URL="https://github.com/0xType/0xProto/releases/download/2.500/0xProto_2_500.zip"
 TEMP_DIR=$(mktemp -d)
 FONT_DIR="$HOME/Library/Fonts"
 
@@ -87,7 +84,6 @@ fi
 
 echo ""
 echo "✅ 0xProto フォントのインストールが完了しました！"
-echo "📊 ${INSTALLED_COUNT} 個のフォントファイルをインストールしました"
 echo ""
 echo "📝 次のステップ:"
 echo "  - ターミナルやエディタの設定で '0xProto' フォントを選択してください"

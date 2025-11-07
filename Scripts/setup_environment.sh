@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Mac環境セットアップスクリプト
-# SSH鍵の生成、0xProtoフォントのインストール、zshrc設定を実行します
+# Mac環境セットアップスクリプト（自動実行版）
+# SSH鍵の生成、フォントインストール、zshrc設定、アプリインストールをすべて自動で実行します
 
 set -e
 
@@ -12,78 +12,58 @@ echo "🚀 Mac環境セットアップを開始します"
 echo "=================================="
 echo ""
 
-# メニュー表示
-echo "実行する項目を選択してください:"
-echo "  1) SSH鍵の生成"
-echo "  2) 0xProto フォントのインストール"
-echo "  3) zshrc設定のセットアップ"
-echo "  4) すべて実行"
-echo "  5) キャンセル"
+# 確認関数
+confirm_step() {
+    local STEP_DESC="$1"
+    read -p "▶ $STEP_DESC を実行しますか？ [y/N]: " CONFIRM
+    if [[ ! "$CONFIRM" =~ ^[Yy]$ ]]; then
+        echo "  ⚠️ $STEP_DESC はスキップされました。"
+        return 1
+    fi
+    return 0
+}
+
+# 1. SSH鍵の生成
+if confirm_step "1/4: SSH鍵の生成"; then
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "1/4: SSH鍵の生成"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    bash "$SCRIPT_DIR/setup_ssh.sh"
+fi
+
+# 2. 0xProto フォントのインストール
+if confirm_step "2/4: 0xProto フォントのインストール"; then
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "2/4: 0xProto フォントのインストール"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    bash "$SCRIPT_DIR/install_0xproto_font.sh"
+fi
+
+# 3. zshrc設定のセットアップ
+if confirm_step "3/4: zshrc設定のセットアップ"; then
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "3/4: zshrc設定のセットアップ"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    bash "$SCRIPT_DIR/setup_zshrc.sh"
+fi
+
+# 4. アプリのインストール
+if confirm_step "4/4: アプリのインストール"; then
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "4/4: アプリのインストール"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    bash "$SCRIPT_DIR/install_apps.sh"
+fi
+
+# 完了メッセージ
 echo ""
-read -p "選択 (1-5): " choice
-
-case $choice in
-    1)
-        echo ""
-        echo "📌 SSH鍵の生成を実行します..."
-        echo ""
-        bash "$SCRIPT_DIR/setup_ssh.sh"
-        ;;
-    2)
-        echo ""
-        echo "📌 0xProto フォントのインストールを実行します..."
-        echo ""
-        bash "$SCRIPT_DIR/install_0xproto_font.sh"
-        ;;
-    3)
-        echo ""
-        echo "📌 zshrc設定のセットアップを実行します..."
-        echo ""
-        bash "$SCRIPT_DIR/setup_zshrc.sh"
-        ;;
-    4)
-        echo ""
-        echo "📌 すべてのセットアップを実行します..."
-        echo ""
-
-        # SSH鍵の生成
-        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo "1/3: SSH鍵の生成"
-        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo ""
-        bash "$SCRIPT_DIR/setup_ssh.sh"
-
-        echo ""
-        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo "2/3: 0xProto フォントのインストール"
-        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo ""
-        bash "$SCRIPT_DIR/install_0xproto_font.sh"
-
-        echo ""
-        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo "3/3: zshrc設定のセットアップ"
-        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo ""
-        bash "$SCRIPT_DIR/setup_zshrc.sh"
-
-        echo ""
-        echo "=================================="
-        echo "✅ すべてのセットアップが完了しました！"
-        echo "=================================="
-        ;;
-    5)
-        echo ""
-        echo "❌ セットアップをキャンセルしました"
-        exit 0
-        ;;
-    *)
-        echo ""
-        echo "❌ 無効な選択です"
-        exit 1
-        ;;
-esac
-
+echo "=================================="
+echo "✅ すべてのセットアップが完了しました！"
+echo "=================================="
 echo ""
-echo "🎉 完了しました！"
+echo "🎉 お疲れさまでした！"
 echo ""
